@@ -6,7 +6,12 @@
               <div class="card-body">
                 <h5 class="card-title">{{ $row->titulo_vaga }}</h5>
                 <p class="card-text">{{ $row->descricao_vaga }}</p>
-                <button wire:click="cadidatase({{ $row->id }})" class="btn btn-primary btn-sm">Editar</button>
+                <center>
+                  <?php if(isset(Auth::user()->id)): ?>
+                    <button wire:click="cadidatase({{ $row->id }})" class="btn btn-success btn-sm">Candidata-se</button>
+                  <?php endif; ?>
+                  <button class="btn btn-light btn-sm">{{ $row->tipo_vaga }}</button>
+                </center>
               </div>
             </div>
           </div>

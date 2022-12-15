@@ -7,18 +7,25 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>TÍTULO</th>
-                <th>DESCRIÇÃO</th>
-                <th>STATUS</th>
+                <th>TITULO</th>
                 <th>TIPO</th>
-                <th>AÇÃO</th>
+                <th>USER</th>
+                <th>STATUS</th>
             </tr>
         </thead>
         <tbody>
              @foreach($vagas as $row)
                 <tr>
-                    <td>{{ $row->id }}</td>
-                    <td>{{ $row->fk_vagas }}</td>
+                    <td>{{ $row->cadt_id }}</td>
+                    <td>{{ $row->titulo_vaga }}</td>
+                    <td>{{ $row->tipo_vaga }}</td>
+                    <td>{{ $row->name }}</td>
+                    <td> @if( $row->status_vaga == '1' )
+                        <span class="badge badge-success">Ativa</span>
+                    @else
+                        <span class="badge badge-warning">Vaga Pausada</span>
+                    @endif
+                    </td>
                 </tr>
             @endforeach 
         </tbody>

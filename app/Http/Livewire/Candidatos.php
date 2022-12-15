@@ -38,7 +38,7 @@ class Candidatos extends Component
             ? CandModel::latest()->paginate($this->paginate)
             : CandModel::latest()->where('name', 'like', '%' . $this->search . '%')
             ->orWhere('name', 'like', '%' . $this->search . '%')
-            ->orWhere('name', 'like', '%' . $this->search . '%')->paginate($this->paginate);
+            ->orWhere('email', 'like', '%' . $this->search . '%')->paginate($this->paginate);
 
         return view('livewire.candidatos.candidato', compact('candidatos'));
     }
