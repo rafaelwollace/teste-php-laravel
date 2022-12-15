@@ -1,15 +1,15 @@
 @extends('layouts.content')
-@section('titulo', 'Produtos')
+@section('titulo', 'Candidato / User')
 @section('conteudo')
 
 <div class="card-header">
     <center>
-        <h2>Produtos</h2>
+        <h2>Candidato / User</h2>
     </center>
 </div>
 
 <div class="card-body">
-    @livewire('produtos')
+    @livewire('candidatos')
 </div>
 
 @endsection

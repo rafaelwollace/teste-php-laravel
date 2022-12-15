@@ -12,7 +12,8 @@
             <div class="form-group">
                 <label for="EMAIL">Status:</label>
                     <select class="form-control" name="status_vaga" id="status_vaga"  wire:model="status_vaga">
-                        <option value="1" selected>Ativo</option>
+                        <option  selected>Selecione</option>
+                        <option value="1">Ativo</option>
                         <option value="0">Pausar Vaga</option>
                     </select>
                 @error('status_vaga') <span class="text-danger">{{ $message }}</span>@enderror
@@ -22,8 +23,10 @@
             <div class="form-group">
                 <label for="EMAIL">Tipo Vaga:</label>
                     <select class="form-control" name="tipo_vaga" id="tipo_vaga"  wire:model="tipo_vaga">
-                        <option value="1" selected>Ativo</option>
-                        <option value="0">Pausar Vaga</option>
+                        <option  selected>Selecione</option>
+                        <option value="CLT" selected>CLT</option>
+                        <option value="Pessoa Júridica">Pessoa Júridica</option>
+                        <option value="Freelancer">Freelancer</option>
                     </select>
                 @error('tipo_vaga') <span class="text-danger">{{ $message }}</span>@enderror
             </div>
@@ -36,8 +39,6 @@
             <textarea class="form-control" id="descricao_vaga" placeholder="Digite o Descrição da Vaga" rows="3" wire:model="descricao_vaga"></textarea>
             @error('descricao_vaga') <span class="text-danger">{{ $message }}</span>@enderror
         </div>
-
-   
 
     <br />
     <button wire:click.prevent="store()" class="btn btn-success">Cadastrar</button>

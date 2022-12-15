@@ -1,10 +1,4 @@
 <div>
-        
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
   
     @if($is_update)
         @include('livewire.vagas.update')
@@ -31,7 +25,13 @@
                     <td>{{ $row->id }}</td>
                     <td>{{ $row->titulo_vaga }}</td>
                     <td>{{ $row->descricao_vaga }}</td>
-                    <td>{{ $row->status_vaga }}</td> 
+                    <td>
+                    @if( $row->status_vaga == '1' )
+                        <span class="badge badge-success">Ativa</span>
+                    @else
+                        <span class="badge badge-warning">Vaga Pausada</span>
+                    @endif
+                    </td> 
                     <td>{{ $row->tipo_vaga }}</td> 
                     <td width="160px;">
                     <button wire:click="edit({{ $row->id }})" class="btn btn-primary btn-sm">Alterar</button>

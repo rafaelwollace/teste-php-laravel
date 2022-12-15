@@ -5,7 +5,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Vagas as VagModel;
+use App\Models\VagaCandidato as VagaCandidato;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
+
 
 class Vagas extends Component
 {
@@ -13,7 +16,7 @@ class Vagas extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $paginate = 20, $search;
-    public $titulo_vaga, $descricao_vaga, $status_vaga, $tipo_vaga, $id_vaga;
+    public $titulo_vaga, $descricao_vaga, $status_vaga, $tipo_vaga, $id_vaga, $cad_id;
     public $is_update = false;
 
     /**
@@ -33,6 +36,13 @@ class Vagas extends Component
         return view('livewire.vagas.vaga', compact('vagas'));
     }
 
+    public function vagas()
+    {
+        $vagas =  VagModel::latest()->where('status_vaga', 1)->paginate($this->paginate);
+           
+        return view('listvagas', compact('vagas'));
+    }
+
     private function clearForm()
     {
         $this->titulo_vaga = '';
@@ -40,6 +50,24 @@ class Vagas extends Component
         $this->status_vaga = '';
         $this->tipo_vaga = '';
     }
+
+
+    public function cadidatase($cad_id)
+    {
+
+        $id_user = Auth::user()->id;
+
+        VagaCandidato::create([
+            'fk_user' => $id_user,
+            'fk_vagas' => $cad_id,    
+        ]);
+
+        $this->dispatchBrowserEvent('alert',[
+            'type'=>'success',
+            'message'=>"Você de candidatou a uma Vaga."
+        ]);
+    }
+
 
     public function store()
     {

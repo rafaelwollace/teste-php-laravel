@@ -22,10 +22,12 @@
         </div>
         <div class="col">
             <div class="form-group">
-                <label for="tipo_vaga">Tipo Vaga:</label>
+                <label for="EMAIL">Tipo Vaga:</label>
                     <select class="form-control" name="tipo_vaga" id="tipo_vaga"  wire:model="tipo_vaga">
-                        <option value="1" selected>Ativo</option>
-                        <option value="0">Pausar Vaga</option>
+                        <option  selected>Selecione</option>
+                        <option value="CLT" selected>CLT</option>
+                        <option value="Pessoa Júridica">Pessoa Júridica</option>
+                        <option value="Freelancer">Freelancer</option>
                     </select>
                 @error('tipo_vaga') <span class="text-danger">{{ $message }}</span>@enderror
             </div>

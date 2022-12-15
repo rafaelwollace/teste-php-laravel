@@ -18,4 +18,9 @@ class Vagas extends Model
     ];
 
     public $timestamps = true;
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

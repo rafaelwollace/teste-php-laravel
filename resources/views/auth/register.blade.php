@@ -2,7 +2,7 @@
 @section('titulo', 'Compras')
 @section('conteudo')
 
-    <div class="row justify-content-center">
+
  
             <div class="card">
                 <div class="card-header">{{ __('Registrar') }}</div>
@@ -71,6 +71,5 @@
                 </div>
             </div>
        
-    </div>
 
 @endsection
